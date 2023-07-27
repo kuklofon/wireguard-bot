@@ -156,16 +156,16 @@ class wireguard_config:
     def create_peer_config(self, peer_private_key: str) -> str:
         """creates config for client and returns it as string"""
         cfg = (
-            f"[Interface]"
-            f"PrivateKey = {peer_private_key}"
-            f"Address = {self.last_peer_adress}"
+            f"[Interface]\n"
+            f"PrivateKey = {peer_private_key}\n"
+            f"Address = {self.last_peer_adress}\n"
             f"DNS = 8.8.8.8\n"
-            f"[Peer]"
-            f"PublicKey = {self.server_public_key}"
-            f"PresharedKey = {self.server_preshared_key}"
-            f"AllowedIPs = 0.0.0.0/0"
-            f"Endpoint = {self.server_ip}:{self.server_port}"
-            f"PersistentKeepalive = 20"
+            f"[Peer]\n"
+            f"PublicKey = {self.server_public_key}\n"
+            f"PresharedKey = {self.server_preshared_key}\n"
+            f"AllowedIPs = 0.0.0.0/0\n"
+            f"Endpoint = {self.server_ip}:{self.server_port}\n"
+            f"PersistentKeepalive = 20\n"
         )
         return cfg
 
