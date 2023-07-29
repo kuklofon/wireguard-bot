@@ -284,7 +284,7 @@ async def cmd_support(message: types.Message):
     # send telegraph page with support info (link: https://telegra.ph/FAQ-po-botu-01-08)
     # place link inside 'странице'and parse it in markdown
     await message.answer(
-        "Подробное описание бота и его функционала доступно на [странице](https://telegra.ph/FAQ-po-botu-01-08)",
+        "Подробное описание бота и его функционала доступно на [странице](https://telegra.ph/FAQ-po-VPN-botu-07-29)",
         parse_mode="Markdown",
     )
 
