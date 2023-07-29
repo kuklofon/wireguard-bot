@@ -118,8 +118,8 @@ class wireguard_config:
         try:
             with open(self.cfg_path, "a") as cfg:
                 cfg.write(
-                    f"#{username}\n[Peer]\nPublicKey = {peer_public_key}"
-                    f"PresharedKey = {self.server_preshared_key}"
+                    f"#{username}\n[Peer]\nPublicKey = {peer_public_key}\n"
+                    f"PresharedKey = {self.server_preshared_key}\n"
                     f"AllowedIPs = {self.add_byte_to_adress(username)}/32\n\n"
                 )
                 logger.info(f"[+] new peer {username} added")
