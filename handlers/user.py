@@ -181,29 +181,29 @@ async def device_selected(call: types.CallbackQuery, state=FSMContext):
         config=user_config,
     )
 
-    with open(f"data/temp/TURKEY_{call.from_user.username}_{device}.conf", "w") as f:
+    with open(f"data/temp/netherlands_{call.from_user.username}_{device}.conf", "w") as f:
         f.write(user_config)
 
     # send config file
     await call.message.answer_document(
-        types.InputFile(f"data/temp/TURKEY_{call.from_user.username}_{device}.conf"),
+        types.InputFile(f"data/temp/netherlands_{call.from_user.username}_{device}.conf"),
         reply_markup=await kb.configs_kb(call.from_user.id),
     )
 
     if device == "PHONE":
         # send qr code (create qr code from config by qrencode)
         os.system(
-            f"qrencode -o data/temp/TURKEY_{call.from_user.username}.png -s 10 -l H -m 2 < data/temp/TURKEY_{call.from_user.username}_{device}.conf"
+            f"qrencode -o data/temp/netherlands_{call.from_user.username}.png -s 10 -l H -m 2 < data/temp/netherlands_{call.from_user.username}_{device}.conf"
         )
         await call.message.answer_photo(
-            types.InputFile(f"data/temp/TURKEY_{call.from_user.username}.png"),
+            types.InputFile(f"data/temp/netherlands_{call.from_user.username}.png"),
         )
 
     # delete temp files
     try:
-        remove(f"data/temp/TURKEY_{call.from_user.username}.conf")
+        remove(f"data/temp/netherlands_{call.from_user.username}.conf")
         if device == "PHONE":
-            remove(f"data/temp/TURKEY_{call.from_user.username}.png")
+            remove(f"data/temp/netherlands_{call.from_user.username}.png")
     except OSError as error:
         logger.error(
             f"Error while deleting temp files for user {call.from_user.username}; Error: {error}"
@@ -229,20 +229,20 @@ async def cmd_show_config(message: types.Message, state=FSMContext):
 
     if device == "PC":
         with open(
-            f"data/temp/TURKEY_{message.from_user.username}_{device}.conf", "w"
+            f"data/temp/netherlands_{message.from_user.username}_{device}.conf", "w"
         ) as f:
             f.write(config)
 
         # send config file
         await message.answer_document(
             types.InputFile(
-                f"data/temp/TURKEY_{message.from_user.username}_{device}.conf"
+                f"data/temp/netherlands_{message.from_user.username}_{device}.conf"
             ),
         )
 
         # delete temp files
         try:
-            remove(f"data/temp/TURKEY_{message.from_user.username}_{device}.conf")
+            remove(f"data/temp/netherlands_{message.from_user.username}_{device}.conf")
         except OSError as error:
             logger.error(
                 f"Error while deleting temp files for user {message.from_user.username}; Error: {error}"
@@ -250,29 +250,29 @@ async def cmd_show_config(message: types.Message, state=FSMContext):
 
     elif device == "PHONE":
         with open(
-            f"data/temp/TURKEY_{message.from_user.username}_{device}.conf", "w"
+            f"data/temp/netherlands_{message.from_user.username}_{device}.conf", "w"
         ) as f:
             f.write(config)
 
         # send config file
         await message.answer_document(
             types.InputFile(
-                f"data/temp/TURKEY_{message.from_user.username}_{device}.conf"
+                f"data/temp/netherlands_{message.from_user.username}_{device}.conf"
             ),
         )
 
         # send qr code (create qr code from config by qrencode)
         os.system(
-            f"qrencode -o data/temp/TURKEY_{message.from_user.username}.png -s 10 -l H -m 2 < data/temp/TURKEY_{message.from_user.username}_{device}.conf"
+            f"qrencode -o data/temp/netherlands_{message.from_user.username}.png -s 10 -l H -m 2 < data/temp/netherlands_{message.from_user.username}_{device}.conf"
         )
         await message.answer_photo(
-            types.InputFile(f"data/temp/TURKEY_{message.from_user.username}.png"),
+            types.InputFile(f"data/temp/netherlands_{message.from_user.username}.png"),
         )
 
         # delete temp files
         try:
-            remove(f"data/temp/TURKEY_{message.from_user.username}_{device}.conf")
-            remove(f"data/temp/TURKEY_{message.from_user.username}.png")
+            remove(f"data/temp/netherlands_{message.from_user.username}_{device}.conf")
+            remove(f"data/temp/netherlands_{message.from_user.username}.png")
         except OSError as error:
             logger.error(
                 f"Error while deleting temp files for user {message.from_user.username}; Error: {error}"
@@ -290,7 +290,7 @@ async def cmd_support(message: types.Message):
 
     # answer with username info @pheezz as markdown
     await message.answer(
-        "Если у тебя все еще остались вопросы, то ты можешь написать [мне](t.me/pheezz) лично",
+        "Если у тебя все еще остались вопросы, то ты можешь написать [мне](t.me/J0hny_Mn3m0nic) лично",
         parse_mode="Markdown",
     )
 
